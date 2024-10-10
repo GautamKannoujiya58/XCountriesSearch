@@ -32,7 +32,7 @@ function XCountriesSearch() {
       } else {
         fetchData(); // Fetch all countries when search is cleared
       }
-    }, 500); // Adjust debounce delay (500ms)
+    }, 2000); // Adjust debounce delay (500ms)
 
     return () => clearTimeout(debounceTimer);
   }, [searchedText]);
