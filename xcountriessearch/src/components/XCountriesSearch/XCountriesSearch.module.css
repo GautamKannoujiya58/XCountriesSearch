@@ -2,13 +2,13 @@
   display: flex;
   flex-wrap: wrap;
 }
-.searchDiv {
+.countryCard {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1vw;
 }
-.searchDiv input {
+.countryCard input {
   width: 12vw;
   height: 2vw;
   border-radius: 4px;

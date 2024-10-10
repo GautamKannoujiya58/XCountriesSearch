@@ -64,7 +64,7 @@ function XCountriesSearch() {
 
   return (
     <>
-      <div className={styles.searchDiv}>
+      <div className={styles.countryCard}>
         <input
           placeholder="Search for countries..."
           type="text"
