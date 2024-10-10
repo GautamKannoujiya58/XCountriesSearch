@@ -77,7 +77,7 @@ function XCountriesSearch() {
       {error ? (
         <p className={styles.errorMessage}>{error}</p>
       ) : (
-        <div className={styles.mainDiv}>
+        <div className={styles.countryCard}>
           {countryData.length > 0 ? (
             <CountryCard countryData={countryData} />
           ) : (
