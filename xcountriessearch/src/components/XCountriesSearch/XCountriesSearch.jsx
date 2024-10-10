@@ -7,7 +7,7 @@ function XCountriesSearch() {
   const [searchedText, setSearchedText] = useState("");
 
   // For fetching the URL data
-  useEffect(() => fetchData, []);
+  useEffect(() => fetchData(), []);
   const fetchData = async () => {
     try {
       const res = await fetch("https://restcountries.com/v3.1/all");
