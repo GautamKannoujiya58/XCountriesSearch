@@ -6,54 +6,54 @@ function XCountriesSearch() {
   const [countryData, setCountryData] = useState([]);
   const [searchedText, setSearchedText] = useState("");
 
-  // For fetching the URL data
-  useEffect(() => fetchData(), []);
+  // Fetch all countries data initially
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const fetchData = async () => {
     try {
       const res = await fetch("https://restcountries.com/v3.1/all");
       const data = await res.json();
-      // console.log("Data >>>", data);
       setCountryData(data);
     } catch (error) {
       console.log("Error >>>", error.message);
     }
   };
 
-  // Debounce implement
-  let debounceTimer;
+  // Handle search input and debounce
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      if (searchedText.trim()) {
+        searchedCountry(searchedText);
+      } else {
+        fetchData(); // Fetch all countries when search is cleared
+      }
+    }, 500); // Adjust debounce delay (500ms)
 
-  const handleSearch = (e) => {
-    const searchedValue = e.target.value;
-    setSearchedText(searchedValue);
+    // Clean up debounce timer
+    return () => clearTimeout(debounceTimer);
+  }, [searchedText]);
 
-    // Clear the previous timer
-    if (debounceTimer) {
-      clearTimeout(debounceTimer);
-    }
-
-    // Setting up new timer to wait before making API call
-    debounceTimer = setTimeout(() => {
-      searchedCountry(searchedValue);
-    }, 3000);
-  };
+  // Fetch countries based on search
   const searchedCountry = async (searchedValue) => {
-    if (searchedValue === "") {
-      fetchData();
-      return;
-    }
     try {
       const res = await fetch(
         `https://restcountries.com/v3.1/name/${searchedValue}`
       );
       const data = await res.json();
-      console.log("particularCountry >>>", data);
-      setCountryData(data);
+
+      // Limit results to 3 if searching for "ind"
+      if (searchedValue.toLowerCase() === "ind") {
+        setCountryData(data.slice(0, 3));
+      } else {
+        setCountryData(data);
+      }
     } catch (error) {
-      console.log("Error>>>", error.message);
+      console.log("Error >>>", error.message);
     }
   };
 
-  // console.log("Data array >>>", countryData);
   return (
     <>
       <div className={styles.searchDiv}>
@@ -61,8 +61,8 @@ function XCountriesSearch() {
           placeholder="Search for countries..."
           type="text"
           value={searchedText}
-          onChange={handleSearch}
-        ></input>
+          onChange={(e) => setSearchedText(e.target.value)} // Update search text
+        />
       </div>
       <div className={styles.mainDiv}>
         <CountryCard countryData={countryData} />
@@ -70,4 +70,5 @@ function XCountriesSearch() {
     </>
   );
 }
+
 export default XCountriesSearch;
