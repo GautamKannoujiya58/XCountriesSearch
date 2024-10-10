@@ -1,0 +1,17 @@
+.mainDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
+.searchDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1vw;
+}
+.searchDiv input {
+  width: 12vw;
+  height: 2vw;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 20px;
+}
