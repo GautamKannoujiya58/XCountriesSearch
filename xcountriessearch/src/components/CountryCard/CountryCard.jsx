@@ -7,7 +7,7 @@ function CountryCard({ countryData }) {
       {countryData.map((country) => (
         <div key={country.name.common} className={styles.countryCard}>
           <img src={country.flags.svg} alt={`${country.name.common} flag`} />
-          <h3>{country.name.common}</h3>
+          <h2>{country.name.common}</h2>
         </div>
       ))}
     </>
