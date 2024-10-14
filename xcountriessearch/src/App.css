@@ -8,26 +8,30 @@
 
 /* Individual country card */
 .countryCard {
-  border: 1px solid #ddd;
-  padding: 10px;
-  width: 200px;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f9f9f9;
+  justify-content: space-between;
+  margin: 10px;
+  width: 160px;
+  height: 220px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  background: #efecec;
 }
 
 /* Flag image */
-.flag {
-  width: 100px;
-  height: auto;
-  margin-bottom: 10px;
+.countryCard img {
+  width: 120px;
+  height: 100px;
+  padding: 12px;
 }
 
 /* Country name */
-p {
+.countryCard p {
   font-size: 1.1rem;
   font-weight: bold;
   color: #333;
+  margin: 0;
+  padding-bottom: 10px;
 }
