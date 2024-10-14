@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 const CountryCard = ({ countryData }) => {
   return (
     <>
-      {countryData.map((country, index) => (
-        <div key={index} className="countryCard">
+      {countryData.map((country) => (
+        <div key={country.flag} className="countryCard">
           {/* Display flag using the img element */}
           <img
             src={country.flags.png}
