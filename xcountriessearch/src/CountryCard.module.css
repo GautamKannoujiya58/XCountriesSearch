@@ -1,0 +1,24 @@
+.countryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  width: 160px;
+  height: 160px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  background: #efecec;
+}
+.countryCard img {
+  width: 120px;
+  height: 100px;
+  padding: 12px;
+}
+
+.countryCard h2 {
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  align-items: center;
+}
