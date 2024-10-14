@@ -37,13 +37,13 @@ function App() {
       const searchedData = await res.json();
 
       if (searchedData.status === 404 || searchedData.length === 0) {
-        setCountryData([]);
+        setCountryData([]); // Set empty data if no match
       } else {
         setCountryData(searchedData);
       }
     } catch (error) {
       console.log("Error >>>", error.message);
-      setCountryData([]);
+      setCountryData([]); // Set empty data in case of error
     }
   };
 
@@ -58,7 +58,7 @@ function App() {
 
     // Only search if the user has typed (not for space and all)
     if (text.length > 0) {
-      // fetch the API endpoint only user stops typing for a given seconds
+      // fetch the API endpoint only when the user stops typing for a given seconds
       const newTimeout = setTimeout(() => fetchSearchedCountry(text), 2000);
 
       // Store the timeout ID to clear it if the user types again within 1 second
@@ -69,11 +69,6 @@ function App() {
     }
   };
 
-  // fetch searched country
-
-  // console.log("countryData >>>", countryData);
-  // console.log("typedText >>>", typedText);
-
   return (
     <>
       <h1>XCountries Search</h1>
@@ -83,7 +78,8 @@ function App() {
         value={typedText}
         onChange={handleChange}
       ></input>
-      <div className={styles.countryCard}>
+      <div className={styles.countryCardContainer}>
+        {/* Pass the countryData prop to the CountryCard component */}
         <CountryCard countryData={countryData} />
       </div>
     </>

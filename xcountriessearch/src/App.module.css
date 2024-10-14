@@ -1,15 +1,33 @@
-.countryCard {
+/* Flexbox container for the country cards */
+.countryCardContainer {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
-input {
+
+/* Individual country card */
+.countryCard {
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
   display: flex;
-  margin: auto;
-  height: 42px;
-  width: 50vw;
-  font-size: 16px;
-  margin-bottom: 12px;
-  padding: 4px;
-  padding-left: 12px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+/* Flag image */
+.flag {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Country name */
+p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
 }
